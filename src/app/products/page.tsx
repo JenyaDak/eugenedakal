@@ -1,8 +1,48 @@
-export default function Products(): JSX.Element {
+"use client";
+
+import { useEffect, useState } from "react";
+
+const ProductsPage = () => {
+  const [products, setProducts] = useState([]);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const res = await fetch("/api/products");
+        if (!res.ok) {
+          throw new Error("Failed to fetch products");
+        }
+        const data = await res.json();
+        if (data.message) {
+          setError(data.message);
+        } else {
+          setProducts(data);
+        }
+      } catch (error) {
+        console.error("Error fetching products:", error);
+        setError("Failed to fetch products.");
+      }
+    };
+    fetchProducts();
+  }, []);
+
   return (
-    <div className="max-w-7xl mx-auto py-8 px-4">
-      <h1 className="text-3xl font-bold">Products Page</h1>
-      <p>Here is a list of our products!</p>
+    <div>
+      {error && <div>{error}</div>}
+      {products.length > 0 ? (
+        products.map((product: any) => (
+          <div key={product._id} className="product">
+            <h2>{product.name}</h2>
+            <p>{product.description}</p>
+            <p>{product.price}</p>
+          </div>
+        ))
+      ) : (
+        <p>No products available</p>
+      )}
     </div>
   );
-}
+};
+
+export default ProductsPage;
