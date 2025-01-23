@@ -56,7 +56,7 @@ const ProductsPage = () => {
                 <button
                   onClick={() => handleAddToCart(product)}
                   disabled={cart.some((item) => item._id === product._id)}
-                  className={`mt-4 bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 ${
+                  className={`mt-4 bg-black text-white px-6 py-3 hover:bg-gray-800 ${
                     cart.some((item) => item._id === product._id)
                       ? "opacity-50 cursor-not-allowed"
                       : ""
