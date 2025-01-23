@@ -1,7 +1,11 @@
 {
   "compilerOptions": {
-    "jsx": "react-jsx",
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "jsx": "preserve",
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "target": "esnext",
     "allowJs": true,
     "skipLibCheck": true,
@@ -20,6 +24,13 @@
       }
     ]
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
-  "exclude": ["node_modules"]
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }
