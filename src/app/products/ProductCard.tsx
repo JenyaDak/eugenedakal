@@ -16,7 +16,7 @@ interface ProductsPageProps {
   products: Product[];
 }
 
-const ProductsPage = ({ products }: ProductsPageProps) => {
+const ProductCard = ({ products }: ProductsPageProps) => {
   const { addToCart, cart } = useCart();
 
   console.debug("This is a debug message");
@@ -85,4 +85,4 @@ const ProductsPage = ({ products }: ProductsPageProps) => {
   );
 };
 
-export default ProductsPage;
+export default ProductCard;

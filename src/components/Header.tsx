@@ -8,8 +8,8 @@ import { useCart } from "../contexts/cartContext";
 import Link from "next/link";
 
 export default function Header(): React.JSX.Element {
-  const [searchOpen, setSearchOpen] = useState(false);
   const { cart } = useCart();
+  const [searchOpen, setSearchOpen] = useState(false);
   const pathname = usePathname();
 
   return (
@@ -32,7 +32,7 @@ export default function Header(): React.JSX.Element {
           >
             Home
           </Link>
-          <a
+          <Link
             href="/products"
             className={`text-gray-800 hover:text-gray-600 pb-1 border-b-2 ${
               pathname === "/products"
@@ -41,8 +41,8 @@ export default function Header(): React.JSX.Element {
             }`}
           >
             Products
-          </a>
-          <a
+          </Link>
+          <Link
             href="/contact"
             className={`text-gray-800 hover:text-gray-600 pb-1 border-b-2 ${
               pathname === "/contact"
@@ -51,7 +51,7 @@ export default function Header(): React.JSX.Element {
             }`}
           >
             Contact
-          </a>
+          </Link>
           <div className="flex space-x-4 items-center">
             <button
               onClick={() => setSearchOpen(!searchOpen)}
@@ -60,11 +60,11 @@ export default function Header(): React.JSX.Element {
               <AiOutlineSearch size={24} />
             </button>
             <div className="relative">
-              <a href="/cart" className="text-gray-800 hover:text-gray-600">
+              <Link href="/cart" className="text-gray-800 hover:text-gray-600">
                 <HiOutlineShoppingBag size={24} />
-              </a>
+              </Link>
               <span className="absolute -top-2 -right-2 bg-black text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
-                {cart.length}
+                {cart.length} {/* Відображення кількості товарів у кошику */}
               </span>
             </div>
           </div>

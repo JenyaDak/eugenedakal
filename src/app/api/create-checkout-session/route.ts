@@ -21,7 +21,7 @@ export default async function handler(
                 name: "Sample Product",
                 images: ["https://example.com/product1.jpg"],
               },
-              unit_amount: 2999, // $29.99
+              unit_amount: 2999,
             },
             quantity: 1,
           },

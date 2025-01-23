@@ -1,9 +1,8 @@
-"use client"; // важливо для використання хуків в Next.js
+"use client";
 
-import { useCart } from "../../contexts/cartContext"; // імпортуємо useCart
-import { useEffect, useState } from "react"; // імпортуємо useState та useEffect
+import { useCart } from "../../contexts/cartContext";
+import { useEffect, useState } from "react";
 
-// Оголошення типу для продукту
 interface Product {
   _id: string;
   name: string;
@@ -13,8 +12,8 @@ interface Product {
 }
 
 const ProductsPage = () => {
-  const { addToCart } = useCart(); // отримуємо функцію додавання в кошик
-  const [products, setProducts] = useState<Product[]>([]); // типізація для products
+  const { addToCart } = useCart();
+  const [products, setProducts] = useState<Product[]>([]);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
@@ -28,7 +27,7 @@ const ProductsPage = () => {
         if (data.message) {
           setError(data.message);
         } else {
-          setProducts(data); // оновлюємо список продуктів
+          setProducts(data);
         }
       } catch (error) {
         console.error("Error fetching products:", error);
@@ -39,7 +38,7 @@ const ProductsPage = () => {
   }, []);
 
   const handleAddToCart = (product: Product) => {
-    addToCart(product); // додаємо продукт до кошика
+    addToCart(product);
   };
 
   return (
@@ -53,7 +52,7 @@ const ProductsPage = () => {
               <p className="text-gray-700 mt-2">{product.description}</p>
               <p className="text-lg font-bold mt-2">{product.price} USD</p>
               <button
-                onClick={() => handleAddToCart(product)} // додаємо товар у кошик
+                onClick={() => handleAddToCart(product)}
                 className="mt-4 bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600"
               >
                 Add to Cart

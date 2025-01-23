@@ -38,7 +38,7 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
           localStorage.removeItem("cart");
         }
       } catch (error) {
-        console.log(error);
+        console.error(error);
         localStorage.removeItem("cart");
       }
     }
@@ -50,6 +50,7 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
       if (isProductInCart) {
         return prevCart;
       }
+
       const updatedCart = [...prevCart, product];
       localStorage.setItem("cart", JSON.stringify(updatedCart));
       return updatedCart;

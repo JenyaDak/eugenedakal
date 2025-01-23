@@ -1,7 +1,7 @@
 import "./globals.css";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
-import { CartProvider } from "../contexts/cartContext"; // імпортуємо CartProvider
+import { CartProvider } from "../contexts/cartContext";
 
 export default function RootLayout({
   children,
