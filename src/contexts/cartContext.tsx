@@ -38,6 +38,7 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
           localStorage.removeItem("cart");
         }
       } catch (error) {
+        console.log(error);
         localStorage.removeItem("cart");
       }
     }

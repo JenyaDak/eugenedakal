@@ -2,7 +2,7 @@
 
 import React from "react";
 import { useCart } from "../../contexts/cartContext";
-import * as ReactTooltip from "react-tooltip";
+import { Tooltip as ReactTooltip } from "react-tooltip";
 
 interface Product {
   _id: string;
@@ -69,7 +69,6 @@ const ProductsPage = ({ products }: ProductsPageProps) => {
                     </button>
                     <ReactTooltip
                       id={`tooltip-${product._id}`}
-                      effect="solid"
                       place="top"
                       delayShow={500}
                     />

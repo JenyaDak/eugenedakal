@@ -1,12 +1,13 @@
-"use client"; // важливо для використання хуків
+"use client";
 
+import React from "react";
 import { useCart } from "../../contexts/cartContext";
 
-export default function Cart(): JSX.Element {
-  const { cart, removeFromCart } = useCart(); // отримуємо кошик і функцію для видалення товарів з кошика
+export default function Cart(): React.JSX.Element {
+  const { cart, removeFromCart } = useCart();
 
   const handleRemoveFromCart = (productId: string) => {
-    removeFromCart(productId); // видаляємо товар з кошика
+    removeFromCart(productId);
   };
 
   return (

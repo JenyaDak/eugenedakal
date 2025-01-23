@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { AiOutlineInstagram, AiOutlineYoutube } from "react-icons/ai";
 import { FaTiktok } from "react-icons/fa";
@@ -12,14 +13,14 @@ export default function Footer(): React.JSX.Element {
       <div className="max-w-7xl mx-auto px-4 py-8 text-center">
         <h3 className="text-lg font-semibold mb-4">Quick links</h3>
         <nav className="flex justify-center space-x-6 mb-6">
-          <a
+          <Link
             href="/"
             className={`text-gray-800 hover:text-gray-600 ${
               pathname === "/" ? "font-bold underline" : ""
             }`}
           >
             Home
-          </a>
+          </Link>
           <a
             href="/products"
             className={`text-gray-800 hover:text-gray-600 ${

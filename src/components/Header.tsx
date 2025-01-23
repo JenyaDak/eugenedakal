@@ -5,6 +5,7 @@ import { AiOutlineSearch } from "react-icons/ai";
 import { HiOutlineShoppingBag } from "react-icons/hi";
 import { usePathname } from "next/navigation";
 import { useCart } from "../contexts/cartContext";
+import Link from "next/link";
 
 export default function Header(): React.JSX.Element {
   const [searchOpen, setSearchOpen] = useState(false);
@@ -14,14 +15,14 @@ export default function Header(): React.JSX.Element {
   return (
     <header className="bg-white shadow relative z-10">
       <div className="max-w-7xl mx-auto py-4 px-4 sm:px-6 lg:px-8 flex justify-between items-center">
-        <a
+        <Link
           href="/"
           className="text-2xl font-bold text-gray-800 hover:text-gray-600"
         >
           Eugene Dakal
-        </a>
+        </Link>
         <nav className="flex space-x-6 items-center">
-          <a
+          <Link
             href="/"
             className={`text-gray-800 hover:text-gray-600 pb-1 border-b-2 ${
               pathname === "/"
@@ -30,7 +31,7 @@ export default function Header(): React.JSX.Element {
             }`}
           >
             Home
-          </a>
+          </Link>
           <a
             href="/products"
             className={`text-gray-800 hover:text-gray-600 pb-1 border-b-2 ${
