@@ -4,9 +4,11 @@ import { useState } from "react";
 import { AiOutlineSearch } from "react-icons/ai";
 import { HiOutlineShoppingBag } from "react-icons/hi";
 import { usePathname } from "next/navigation";
+import { useCart } from "../contexts/cartContext";
 
 export default function Header(): React.JSX.Element {
   const [searchOpen, setSearchOpen] = useState(false);
+  const { cart } = useCart();
   const pathname = usePathname();
 
   return (
@@ -61,7 +63,7 @@ export default function Header(): React.JSX.Element {
                 <HiOutlineShoppingBag size={24} />
               </a>
               <span className="absolute -top-2 -right-2 bg-black text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
-                1
+                {cart.length}
               </span>
             </div>
           </div>
