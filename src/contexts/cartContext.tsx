@@ -31,28 +31,21 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
     const savedCart = localStorage.getItem("cart");
     if (savedCart) {
       try {
-        const parsedCart = JSON.parse(savedCart);
-        if (Array.isArray(parsedCart)) {
-          setCart(parsedCart);
-        } else {
-          localStorage.removeItem("cart");
-        }
-      } catch (error) {
-        console.error(error);
+        setCart(JSON.parse(savedCart));
+      } catch {
         localStorage.removeItem("cart");
       }
     }
   }, []);
 
+  const saveCartToLocalStorage = (updatedCart: Product[]) => {
+    localStorage.setItem("cart", JSON.stringify(updatedCart));
+  };
+
   const addToCart = (product: Product) => {
     setCart((prevCart) => {
-      const isProductInCart = prevCart.some((item) => item._id === product._id);
-      if (isProductInCart) {
-        return prevCart;
-      }
-
       const updatedCart = [...prevCart, product];
-      localStorage.setItem("cart", JSON.stringify(updatedCart));
+      saveCartToLocalStorage(updatedCart);
       return updatedCart;
     });
   };
@@ -62,7 +55,7 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
       const updatedCart = prevCart.filter(
         (product) => product._id !== productId
       );
-      localStorage.setItem("cart", JSON.stringify(updatedCart));
+      saveCartToLocalStorage(updatedCart);
       return updatedCart;
     });
   };
